@@ -50,8 +50,7 @@ pub fn main() -> Result<(), String> {
         }
 
         ::std::thread::sleep(Duration::new(0, 1_000_000_000u32 / 65536));
-        //::std::thread::sleep(Duration::new(0, 1_000_000_000u32 / 10));
-        // The rest of the game loop goes here...
+
         frame_counter += 1;
         if frame_counter % 10 == 0 {
             context.next_tick();
@@ -72,7 +71,6 @@ pub enum SimulationState {
 pub struct Point(pub i32, pub i32);
 
 pub struct SimContext {
-    //pub points: Vec<Point>,
     pub points: [[bool; GRID_Y_SIZE as usize]; GRID_X_SIZE as usize],
     pub scanner: Vec<Point>,
     pub state: SimulationState,
@@ -95,7 +93,6 @@ impl SimContext {
 
         SimContext {
             scanner: vec![Point(0, 1), Point(1, 1), Point(2, 1)],
-            // points: vec![Point(125, 1)],
             points: cells,
             state: SimulationState::Paused,
         }
